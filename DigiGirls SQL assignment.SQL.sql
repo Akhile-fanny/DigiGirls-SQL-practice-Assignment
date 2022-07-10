@@ -5,8 +5,8 @@ Display the customer names that share the same address. (E.g husband and wife)  
 SELECT cus1.first_name, cus1.last_name, cus2.first_name, cus2.last_name
 FROM customer AS cus1
 INNER JOIN customer AS cus2 ON 
-								cus1.customer_id != cus2.customer_id 
-							AND cus1.address_id = cus2.address_id;
+			cus1.customer_id != cus2.customer_id 
+			AND cus1.address_id = cus2.address_id;
 							
 							
 --Q2
@@ -60,7 +60,7 @@ SELECT COUNT(title)AS number_of_not_rented_movies  FROM film WHERE film_id NOT I
 SELECT concat(cus.first_name,' ', cus.last_name) AS customer_name  
 FROM customer cus
 WHERE customer_id NOT IN (SELECT DISTINCT(customer_id) 
-										FROM rental);
+						FROM rental);
 										
 --Q7
 /*  QUESTION 7.
@@ -112,7 +112,7 @@ For all the movies rated “PG” show me the movie and the number of times it g
 
 SELECT fil.title, COUNT(inv.film_id) AS times_rented 
 FROM film fil INNER JOIN inventory inv ON fil.film_id = inv.film_id 
-								INNER JOIN rental AS ren ON inv.inventory_id = ren.inventory_id
+						INNER JOIN rental AS ren ON inv.inventory_id = ren.inventory_id
 								
 WHERE rating = 'PG'
 GROUP BY title
